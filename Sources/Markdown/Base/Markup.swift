@@ -82,7 +82,10 @@ func makeMarkup(_ data: _MarkupData) -> Markup {
 ///
 /// > Note: All supported markup elements are already implemented in the framework.
 /// Use this protocol only as a generic constraint.
-public protocol Markup {
+
+public protocol Markup  {
+	
+	
     /// Accept a `MarkupVisitor` and call the specific visitation method for this element.
     ///
     /// - parameter visitor: The `MarkupVisitor` visiting the element.
@@ -98,7 +101,7 @@ public protocol Markup {
 
 extension Markup {
     /// The raw markup backing the element.
-    var raw: AbsoluteRawMarkup {
+    public var raw: AbsoluteRawMarkup {
         return _data.raw
     }
 
@@ -187,6 +190,11 @@ extension Markup {
         return MarkupChildren(self)
     }
 
+	public var childrenArray:[Markup] {
+		return children.map{$0}
+	}
+	
+	
     /// Returns the child at the given position if it is within the bounds of `children.indices`.
     ///
     /// - Complexity: `O(childCount)`

@@ -8,6 +8,8 @@
  See https://swift.org/CONTRIBUTORS.txt for Swift project authors
 */
 
+import Foundation
+
 /// An element with attribute text that wraps other block elements.
 ///
 /// A block directive can be used to tag wrapped block elements or be a novel block element in itself.

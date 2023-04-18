@@ -10,7 +10,7 @@
 
 import Foundation
 
-fileprivate extension Markup {
+public extension Markup {
     /// The parental chain of elements from a root to this element.
     var parentalChain: [Markup] {
         var stack: [Markup] = [self]
@@ -417,7 +417,7 @@ public struct MarkupFormatter: MarkupWalker {
         var orderedListCount = 0
         for element in element.parentalChain {
             if element is BlockQuote {
-                prefix += "> "
+                //!!!prefix += "> "
             } else if element is UnorderedList {
                 if unorderedListCount > 0 {
                     prefix += "  "
@@ -453,7 +453,7 @@ public struct MarkupFormatter: MarkupWalker {
                     prefix += String(repeating: " ", count: numeralPrefix.count)
                 }
             } else if element is BlockDirective {
-                prefix += "    "
+                //!!!prefix += "    "
             }
         }
         return prefix
@@ -1113,6 +1113,7 @@ public struct MarkupFormatter: MarkupWalker {
 
         if blockDirective.childCount > 0 {
             print(" {", for: blockDirective)
+			queueNewline()
         }
 
         descendInto(blockDirective)

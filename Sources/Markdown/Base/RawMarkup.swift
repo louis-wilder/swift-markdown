@@ -90,7 +90,7 @@ public struct RawMarkupHeader {
     var parsedRange: SourceRange?
 }
 
-final class RawMarkup: ManagedBuffer<RawMarkupHeader, RawMarkup> {
+public final class RawMarkup: ManagedBuffer<RawMarkupHeader, RawMarkup> {
     enum Error: LocalizedError {
         case concreteConversionError(from: RawMarkup, to: Markup.Type)
         var errorDescription: String? {

@@ -9,7 +9,7 @@
 */
 
 /// A unique identifier for an element in any markup tree currently in memory.
-struct MarkupIdentifier: Equatable {
+public struct MarkupIdentifier: Equatable,Hashable {
     /// A globally unique identifier for the root of the tree,
     /// acting as a scope for child identifiers.
     let rootId: UInt64
@@ -48,7 +48,7 @@ struct MarkupIdentifier: Equatable {
 }
 
 /// Metadata for a specific markup element in memory.
-struct MarkupMetadata {
+public struct MarkupMetadata {
     /// A unique identifier under a root element.
     let id: MarkupIdentifier
 
@@ -95,7 +95,7 @@ struct MarkupMetadata {
 ///
 /// This bundles a `RawMarkup` node with some metadata that keeps track of
 /// where and in which tree the element resides.
-struct AbsoluteRawMarkup {
+public struct AbsoluteRawMarkup {
     /// The relative, sharable raw markup element.
     let markup: RawMarkup
 
@@ -122,7 +122,7 @@ public struct _MarkupData {
     }
 
     /// A unique identifier for this data. Use as you would pointer identity.
-    var id: MarkupIdentifier {
+    public var id: MarkupIdentifier {
         return raw.metadata.id
     }
 
